@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import firebase from "firebase/app";
+import "firebase/database";
+import {
+    FirebaseDatabaseProvider,
+    FirebaseDatabaseNode
+} from "@react-firebase/database";
+import { config } from "./config";
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <FirebaseDatabaseProvider firebase={firebase} {...config}>
+            <App/>
+        </FirebaseDatabaseProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
